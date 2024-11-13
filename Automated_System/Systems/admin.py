@@ -50,3 +50,16 @@ class NotificationAdmin(admin.ModelAdmin):
     ]
     ordering = ['notification_created']
     list_select_related = ['user']
+
+
+
+@admin.register(Feedback)
+class FeedbackAdmin(admin.ModelAdmin):
+    list_display = ['user', 'feedback_rating', 'feedback_date']
+    search_fields = ['user', 'feedback_rating']
+    fieldsets = [
+        ('Feedback Information', {'fields': ['user', 'feedback_rating']})
+    ]
+    list_per_page = 10
+    ordering = ['feedback_date', 'feedback_rating']
+    list_select_related = ['user']

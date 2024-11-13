@@ -47,3 +47,33 @@ class Notification(models.Model):
     def __str__(self):
         return self.user.username + ' - ' + self.notification_message[:20]
     
+
+class Register(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    register_date = models.DateField(auto_now_add=True)
+    register_time = models.TimeField(auto_now_add=True)
+
+    def __str__(self):
+        return self.user.username + ' - ' + str(self.register_date) + ' - ' + str(self.register_time)
+    
+class Login(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    login_date = models.DateField(auto_now_add=True)
+    login_time = models.TimeField(auto_now_add=True)
+
+    def __str__(self):
+        return self.user.username + ' - ' + str(self.login_date) + ' - ' + str(self.login_time)
+
+class Feedback(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    service = models.ForeignKey(Service, on_delete=models.CASCADE, null=True)
+    feedback_rating = models.SmallIntegerField()
+    feedback_date = models.DateField(auto_now_add=True)
+    feedback_time = models.TimeField(auto_now_add=True)
+
+    def __str__(self):
+        return self.user.username + ' - ' + str(self.feedback_date) + ' - ' + str(self.feedback_time)
+
+
+
+    
