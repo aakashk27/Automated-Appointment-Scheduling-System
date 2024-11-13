@@ -14,7 +14,7 @@ class Service(models.Model):
     service_price = models.DecimalField(max_digits=10, decimal_places=2)
     service_duration = models.DurationField(help_text='Duration of the service in minutes.')
     service_image = models.ImageField(upload_to='service_images/', blank=True)
-    service_category = models.CharField(max_length=100)
+    service_category = models.CharField(max_length=100, blank=True)
 
     def __str__(self):
         return self.service_name
